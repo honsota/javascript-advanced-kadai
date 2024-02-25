@@ -8,7 +8,6 @@ const typedfield = document.getElementById('typed');
 const wrap = document.getElementById('wrap');
 const start = document.getElementById('start');
 const count = document.getElementById('count');
-const timeUp = document.getElementById('timeUp');
 // 複数のテキストを格納する配列
 const textLists = [
    'Hello World','This is my App','How are you?',
@@ -95,13 +94,15 @@ const rankCheck = score => {
 const gameOver = id => {
   
   clearInterval(id);
+  untypedfield.textContent = 'タイムアップ！';
+  setTimeout(() => {
   const result = confirm(rankCheck(score));
  
   // OKボタンをクリックされたらリロードする
   if(result == true) {
     window.location.reload();
   }
-};
+}, 10)};
 
 // カウントダウンタイマー
 const timer = () => {
@@ -121,9 +122,9 @@ const timer = () => {
       // タイムアップを表示
       // setTimeout関数を使う
 
-      timeUp.textContent='タイムアップ';
+      
     }
-    setTimeout(timeUp, 10);
+    
   }, 1000);
 };
  // ゲームスタート時の処理
